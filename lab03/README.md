@@ -12,3 +12,5 @@
   Dos dados obtidos, foi criado um histograma como mostra a seguir.
   
   ![histograma](https://github.com/MatheusBulhoes/MC536/blob/master/lab03/images/histogram.png)
+  
+  Vemos que os livros melhores avaliados pela parcela mais nova foi, em sua maioria, publicados no século atual.
