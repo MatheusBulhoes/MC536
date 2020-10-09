@@ -13,4 +13,4 @@
   
   ![histograma](https://github.com/MatheusBulhoes/MC536/blob/master/lab03/images/histogram.png)
   
-  Vemos que os livros melhores avaliados pela parcela mais nova foi, em sua maioria, publicados no século atual.
+  Como era de se esperar, vemos que os livros mais bem avaliados pela parcela mais nova foram publicados mais recentemente, sendo a maioria deles lançados neste século.
