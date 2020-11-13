@@ -25,6 +25,7 @@ CREATE (d1)-[:SameAs]->(d2)
 Use o `DELETE` para excluir o relacionamento que você criou (apenas ele).
 
 ### Resolução
+~~~cypher
 MATCH (:Drug {name:"Dipyrone"})-[s:SameAs]->(:Drug {name:"Metamizole"})
 DELETE s
 ~~~
