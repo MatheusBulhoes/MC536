@@ -76,6 +76,15 @@ Que tipo de análise interessante pode ser feita com esse grafo?
 Proponha um tipo de análise e escreva uma sentença em Cypher que realize a análise.
 
 ### Resolução
+
+Verificando qual o número máximo de patologias que um medicamento pode causar como efeito colateral.
+
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+MATCH (d:Drug)-[c:Causes]->(p:Pathology)
+MERGE (d)-[r:count]->()
+ON CREATE SET r.weight=1
+ON MATCH SET r.weight=r.weight+1
+
+MATCH ()-[r:count]->()
+RETURN max(r.weight)
 ~~~
