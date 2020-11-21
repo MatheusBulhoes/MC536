@@ -1,13 +1,3 @@
-# Modelo para Apresentação do Lab07 - Análise de Redes
-
-Estrutura de pastas:
-
-~~~
-├── README.md  <- arquivo apresentando a tarefa
-│
-└── notebook   <- arquivos do notebook
-~~~
-
 ## Tarefa de análises feitas no Cypher
 
 ## Exercício 1
@@ -15,15 +5,17 @@ Estrutura de pastas:
 Calcule o Pagerank do exemplo da Wikipedia em Cypher:
 
 ~~~cypher
-(escreva aqui a resolução em Cypher)
-~~~
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/santanche/lab2learn/master/network/pagerank/pagerank-wikipedia.csv' AS line
+MERGE (p1:Page {name:line.source})
+MERGE (p2:Page {name:line.target})
+CREATE (p1)-[:LINKS]->(p2)
 
-> Coloque aqui a imagem resultante conforme o exemplo (não obrigatório, mas sugerido - imagem produzida pelo CytoScape ou Gephi).
+CALL gds.graph.create('prGraph','Page','LINKS')
 
-![PageRank](images/pagerank-cytoscape.png)
-
-~~~cypher
-(escreva aqui a resolução em Cypher)
+CALL gds.pageRank.stream('prGraph')
+YIELD nodeId, score
+MATCH (p:Page {name: gds.util.asNode(nodeId).name})
+SET p.pagerank = score
 ~~~
 
 ## Exercício 2
@@ -33,7 +25,3 @@ Departing from a Drug-Drug graph created in a previous lab, whose relationship d
 ~~~cypher
 (escreva aqui a resolução em Cypher)
 ~~~
-
-> Coloque aqui a imagem resultante conforme o exemplo (não obrigatório, mas sugerido - imagem produzida pelo CytoScape ou Gephi).
-
-![Comunidade](images/comunidade-cytoscape.png)
