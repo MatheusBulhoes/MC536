@@ -142,7 +142,7 @@ let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/d
 for $p in ($pubchem//Information),
     $s in ($pubchem//Synonym),
     $d in ($dron//drug)
-where concat('http://purl.obolibrary.org/obo/CHEBI_', substring($s/text(), 7)) = $d/@id
-    group by $s
-    return {data($s), data($p/Synonym), data($d/@name), '&#xa;'}
+where concat('http://purl.obolibrary.org/obo/CHEBI_', substring($s/text(), 7)) = $d/@id and $p/Synonym = $s
+group by $s
+return {data($s), data($p/Synonym), data($d/@name), '&#xa;'}
 ~~~
